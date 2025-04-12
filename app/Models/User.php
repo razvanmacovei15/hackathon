@@ -57,4 +57,34 @@ class User extends Authenticatable
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
+
+    public function financialProfile()
+    {
+        return $this->hasOne(UserFinancialProfile::class);
+    }
+
+    public function householdMembers()
+    {
+        return $this->hasMany(HouseholdMember::class);
+    }
+
+    public function getTotalHouseholdIncomeAttribute()
+    {
+        return $this->householdMembers()
+            ->get()
+            ->sum('total_monthly_income');
+    }
+
+    public function incomeSources()
+    {
+        return $this->hasMany(IncomeSource::class);
+    }
+
+    public function getTotalMonthlyIncomeAttribute()
+    {
+        return $this->incomeSources()
+            ->where('is_active', true)
+            ->get()
+            ->sum('monthly_amount');
+    }
 }

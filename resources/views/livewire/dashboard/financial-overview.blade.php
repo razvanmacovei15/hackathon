@@ -53,16 +53,22 @@
                     <div class="flex mb-2 items-center justify-between">
                         <div>
                             <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-                                {{ number_format(($total_monthly_expenses ?? 0) / ($all_incomes_sum ?? 1) * 100, 1) }}%
+                                @php
+                                    $ratio = 0;
+                                    if (($all_incomes_sum ?? 0) > 0) {
+                                        $ratio = ($total_monthly_expenses ?? 0) / $all_incomes_sum * 100;
+                                    }
+                                @endphp
+                                {{ number_format($ratio, 1) }}%
                             </span>
                         </div>
                     </div>
                     <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-                        <div style="width:{{ min(($total_monthly_expenses ?? 0) / ($all_incomes_sum ?? 1) * 100, 100) }}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"></div>
+                        <div style="width:{{ min($ratio, 100) }}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"></div>
                     </div>
                     <p class="text-sm text-gray-600">
                         @php
-                            $expenseRatio = ($total_monthly_expenses ?? 0) / ($all_incomes_sum ?? 1) * 100;
+                            $expenseRatio = $ratio;
                         @endphp
                         @if($expenseRatio <= 50)
                             <span class="text-green-600">Healthy</span> - Your expenses are well within your income.

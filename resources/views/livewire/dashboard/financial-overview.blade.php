@@ -263,7 +263,7 @@
                     labels: @json($savings?->pluck('name') ?? []),
                     datasets: [{
                         label: 'Current Amount (RON)',
-                        data: @json($savings?->pluck('amount') ?? []),
+                        data: @json($savings?->where('type', 'Emergency Fund')->pluck('amount') ?? []),
                         backgroundColor: '#10B981'
                     }, {
                         label: 'Target Amount (RON)',

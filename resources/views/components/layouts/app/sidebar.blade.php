@@ -17,6 +17,19 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('7 Baby Steps')" class="grid">
+                    <flux:navlist.item icon="chart-bar" :href="route('baby-steps.overview')" :current="request()->routeIs('baby-steps.overview')" wire:navigate>{{ __('Overview') }}</flux:navlist.item>
+                    <flux:navlist.item icon="banknotes" :href="route('baby-steps.step1')" :current="request()->routeIs('baby-steps.step1')" wire:navigate>{{ __('Step I') }}</flux:navlist.item>
+                    <flux:navlist.item icon="credit-card" :href="route('baby-steps.step2')" :current="request()->routeIs('baby-steps.step2')" wire:navigate>{{ __('Step II') }}</flux:navlist.item>
+                    <flux:navlist.item icon="shield-check" :href="route('baby-steps.step3')" :current="request()->routeIs('baby-steps.step3')" wire:navigate>{{ __('Step III') }}</flux:navlist.item>
+                    <flux:navlist.item icon="chart-pie" :href="route('baby-steps.step4')" :current="request()->routeIs('baby-steps.step4')" wire:navigate>{{ __('Step IV') }}</flux:navlist.item>
+                    <flux:navlist.item icon="academic-cap" :href="route('baby-steps.step5')" :current="request()->routeIs('baby-steps.step5')" wire:navigate>{{ __('Step V') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home-modern" :href="route('baby-steps.step6')" :current="request()->routeIs('baby-steps.step6')" wire:navigate>{{ __('Step VI') }}</flux:navlist.item>
+                    <flux:navlist.item icon="gift" :href="route('baby-steps.step7')" :current="request()->routeIs('baby-steps.step7')" wire:navigate>{{ __('Step VII') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
             <flux:spacer />
 
             <flux:navlist variant="outline">
@@ -61,6 +74,7 @@
 
                     <flux:menu.radio.group>
                         <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                        <flux:menu.item :href="route('onboarding')" icon="arrow-path" wire:navigate>{{ __('Redo Onboarding') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
@@ -111,6 +125,7 @@
 
                     <flux:menu.radio.group>
                         <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                        <flux:menu.item :href="route('onboarding')" icon="arrow-path" wire:navigate>{{ __('Redo Onboarding') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />

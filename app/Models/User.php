@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'onboarded',
     ];
 
     /**
@@ -44,6 +45,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'onboarded' => 'boolean',
         ];
     }
 
@@ -56,5 +58,43 @@ class User extends Authenticatable
             ->explode(' ')
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+    }
+
+    /**
+     * Mark the user as having completed onboarding
+     */
+    public function markOnboardingComplete(): void
+    {
+        $this->update(['onboarded' => true]);
+    }
+
+    public function monthlyEarnings()
+    {
+        return $this->hasMany(UserMonthlyEarning::class);
+    }
+
+    public function monthlyExpenses()
+    {
+        return $this->hasMany(EssentialMonthlyExpense::class);
+    }
+
+    public function mortgages()
+    {
+        return $this->hasMany(MonthlyHouseMortgage::class);
+    }
+
+    public function monthlyDebtPayments()
+    {
+        return $this->hasMany(UserMonthlyDebtPayment::class);
+    }
+
+    public function savings()
+    {
+        return $this->hasMany(UserSaving::class);
+    }
+
+    public function financialSituation()
+    {
+        return $this->hasOne(UserFinancialSituation::class);
     }
 }

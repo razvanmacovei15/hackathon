@@ -4,6 +4,8 @@
             <flux:navlist.item :href="route('settings.profile')" wire:navigate>{{ __('Profile') }}</flux:navlist.item>
             <flux:navlist.item :href="route('settings.password')" wire:navigate>{{ __('Password') }}</flux:navlist.item>
             <flux:navlist.item :href="route('settings.appearance')" wire:navigate>{{ __('Appearance') }}</flux:navlist.item>
+            <div class="my-2 border-t border-zinc-200 dark:border-zinc-700"></div>
+            <flux:navlist.item :href="route('onboarding')" wire:navigate>{{ __('Redo Onboarding') }}</flux:navlist.item>
         </flux:navlist>
     </div>
 

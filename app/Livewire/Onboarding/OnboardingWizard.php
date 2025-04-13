@@ -601,13 +601,19 @@ class OnboardingWizard extends Component
             // Mark user as onboarded
             $this->user->update(['onboarded' => true]);
 
-            // Redirect to dashboard after a short delay
+            // Dispatch event for loading screen
             $this->dispatch('onboarding-completed');
+
+            // Keep loading state for 2 seconds to show the loading screen
+            sleep(2);
+
+            // Redirect to dashboard
             return redirect()->route('dashboard');
             
         } catch (\Exception $e) {
-            session()->flash('error', 'There was an error calculating your financial situation. Please try again.');
             $this->isCalculating = false;
+            session()->flash('error', 'There was an error calculating your financial situation. Please try again.');
+            return;
         }
     }
 

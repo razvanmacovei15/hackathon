@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class BabyStepsStep1 extends Component
 {
     public $currentEmergencyFund = 0;
-    public $targetEmergencyFund = 1000;
+    public $targetEmergencyFund = 5000;
     public $progress = 0;
 
     public function mount()

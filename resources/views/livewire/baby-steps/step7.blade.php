@@ -12,8 +12,8 @@
                     <!-- Wealth Building Progress -->
                     <div>
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-sm font-medium text-gray-700">Current Wealth: ${{ number_format($currentWealth) }}</span>
-                            <span class="text-sm font-medium text-gray-700">Target: ${{ number_format($targetWealth) }}</span>
+                            <span class="text-sm font-medium text-gray-700">Current Wealth: {{ number_format($currentWealth) }} RON</span>
+                            <span class="text-sm font-medium text-gray-700">Target: {{ number_format($targetWealth) }} RON</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2.5">
                             <div class="bg-blue-600 h-2.5 rounded-full" style="width: {{ $wealthProgress }}%"></div>
@@ -23,8 +23,8 @@
                     <!-- Giving Progress -->
                     <div>
                         <div class="flex items-center justify-between mb-1">
-                            <span class="text-sm font-medium text-gray-700">Monthly Giving: ${{ number_format($currentGiving) }}</span>
-                            <span class="text-sm font-medium text-gray-700">Target: ${{ number_format($targetGiving) }}</span>
+                            <span class="text-sm font-medium text-gray-700">Monthly Giving: {{ number_format($currentGiving) }} RON</span>
+                            <span class="text-sm font-medium text-gray-700">Target: {{ number_format($targetGiving) }} RON</span>
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2.5">
                             <div class="bg-green-600 h-2.5 rounded-full" style="width: {{ $givingProgress }}%"></div>

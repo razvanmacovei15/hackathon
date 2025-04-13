@@ -8,7 +8,7 @@
         <div class="space-y-4">
             <div>
                 <h3 class="text-lg font-semibold text-gray-900">Your Current Debt</h3>
-                <p class="mt-2 text-3xl font-bold text-gray-900">${{ number_format($totalDebt) }}</p>
+                <p class="mt-2 text-3xl font-bold text-gray-900">{{ number_format($totalDebt) }} RON</p>
             </div>
 
             <div class="space-y-2">

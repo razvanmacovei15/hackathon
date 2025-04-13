@@ -3,15 +3,15 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-700 mb-2">Monthly Income</h3>
-            <p class="text-2xl font-bold text-green-600">RON {{ number_format($all_incomes_sum ?? 0, 2) }}</p>
+            <p class="text-2xl font-bold text-green-600">{{ number_format($all_incomes_sum ?? 0, 2) }} RON</p>
         </div>
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-700 mb-2">Monthly Essential Expenses</h3>
-            <p class="text-2xl font-bold text-red-600">RON {{ number_format($total_monthly_essensial_expenses ?? 0, 2) }}</p>
+            <p class="text-2xl font-bold text-red-600">{{ number_format($total_monthly_essensial_expenses ?? 0, 2) }} RON</p>
         </div>
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Savings</h3>
-            <p class="text-2xl font-bold text-purple-600">RON {{ number_format($savings_sum ?? 0, 2) }}</p>
+            <p class="text-2xl font-bold text-purple-600">{{ number_format($savings_sum ?? 0, 2) }} RON</p>
         </div>
     </div>
 
@@ -142,6 +142,13 @@
                     plugins: {
                         legend: {
                             position: 'right'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw.toLocaleString() + ' RON';
+                                }
+                            }
                         }
                     }
                 }
@@ -186,6 +193,13 @@
                     plugins: {
                         legend: {
                             position: 'right'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw.toLocaleString() + ' RON';
+                                }
+                            }
                         }
                     }
                 }
@@ -200,11 +214,11 @@
                 data: {
                     labels: @json($debts?->pluck('name') ?? []),
                     datasets: [{
-                        label: 'Total Amount',
+                        label: 'Total Amount (RON)',
                         data: @json($debts?->pluck('total_amount') ?? []),
                         backgroundColor: '#EF4444'
                     }, {
-                        label: 'Remaining',
+                        label: 'Remaining (RON)',
                         data: @json($debts?->pluck('remaining_amount') ?? []),
                         backgroundColor: '#F97316'
                     }]
@@ -213,7 +227,21 @@
                     responsive: true,
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString() + ' RON';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw.toLocaleString() + ' RON';
+                                }
+                            }
                         }
                     }
                 }
@@ -228,11 +256,11 @@
                 data: {
                     labels: @json($savings?->pluck('name') ?? []),
                     datasets: [{
-                        label: 'Current Amount',
+                        label: 'Current Amount (RON)',
                         data: @json($savings?->pluck('amount') ?? []),
                         backgroundColor: '#10B981'
                     }, {
-                        label: 'Target Amount',
+                        label: 'Target Amount (RON)',
                         data: @json($savings?->pluck('target_amount') ?? []),
                         backgroundColor: '#3B82F6'
                     }]
@@ -241,7 +269,21 @@
                     responsive: true,
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString() + ' RON';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw.toLocaleString() + ' RON';
+                                }
+                            }
                         }
                     }
                 }

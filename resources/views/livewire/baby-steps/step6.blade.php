@@ -10,7 +10,7 @@
                 <h3 class="text-lg font-semibold text-gray-900">Your Progress</h3>
                 <div class="mt-2">
                     <div class="flex items-center justify-between mb-1">
-                        <span class="text-sm font-medium text-gray-700">${{ number_format($remainingMortgage) }} remaining</span>
+                        <span class="text-sm font-medium text-gray-700">{{ number_format($remainingMortgage) }} RON remaining</span>
                         <span class="text-sm font-medium text-gray-700">{{ round($progress) }}% paid</span>
                     </div>
                     <div class="w-full bg-gray-200 rounded-full h-2.5">

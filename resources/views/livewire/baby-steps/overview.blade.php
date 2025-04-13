@@ -13,7 +13,7 @@
         <div class="bg-white rounded-lg shadow p-6 space-y-4">
             <div class="flex items-center space-x-3">
                 <span class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-bold">1</span>
-                <h3 class="text-xl font-bold text-gray-900">Save $1,000 for Emergencies</h3>
+                <h3 class="text-xl font-bold text-gray-900">Save 5000RON for Emergencies</h3>
             </div>
             <p class="text-gray-600">
                 Living paycheck to paycheck without a plan for your money will trap you in a never-ending cycle of money stress. It's time to take control—and the first step is saving $1,000 for a starter emergency fund.

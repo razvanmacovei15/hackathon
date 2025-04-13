@@ -540,6 +540,7 @@
 <script>
     document.addEventListener('livewire:initialized', () => {
         @this.on('onboarding-completed', () => {
+            // Show loading screen for 2 seconds
             setTimeout(() => {
                 window.location.href = '/dashboard';
             }, 2000);

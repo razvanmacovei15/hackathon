@@ -604,11 +604,8 @@ class OnboardingWizard extends Component
             // Dispatch event for loading screen
             $this->dispatch('onboarding-completed');
 
-            // Keep loading state for 2 seconds to show the loading screen
-            sleep(2);
-
-            // Redirect to dashboard
-            return redirect()->route('dashboard');
+            // Reset calculating state
+            $this->isCalculating = false;
             
         } catch (\Exception $e) {
             $this->isCalculating = false;
